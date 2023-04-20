@@ -33,6 +33,18 @@ import {
   export const Post = (props) => {
     const { post } = props;
     // const [postID,setPostID] = useState<CommentPostID>({postID: post.id});
+    useEffect(() => {
+      const likesDoc = query(likesRef, where("postId", "==", post.id));
+    },[])
+    // useEffect((likesDoc) => {
+
+    // },[])
+    // useEffect(() => {
+
+    // },[])
+    // useEffect(() => {
+
+    // },[])
     const [user] = useAuthState(auth);
   
     const [likes, setLikes] = useState(null);
