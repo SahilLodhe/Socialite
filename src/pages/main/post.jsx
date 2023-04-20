@@ -91,7 +91,7 @@ import {
   
     useEffect(() => {
       getLikes();
-    }, []);
+    }, [getLikes]);
     
     return (
       <div>
