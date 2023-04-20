@@ -90,6 +90,12 @@ import {
     const hasUserLiked = likes?.find((like) => like.userId === user?.uid);
   
     useEffect(() => {
+      const getLikes = async () => {
+        const data = await getDocs(likesDoc);
+        setLikes(
+          data.docs.map((doc) => ({ userId: doc.data().userId, likeId: doc.id }))
+        );
+      }
       getLikes();
     }, [getLikes]);
     
