@@ -5,7 +5,7 @@ import { auth } from "../config/firebase"
 import { useAuthState } from "react-firebase-hooks/auth" // to update the value o fthe phott when signed out or during a new login
 import { signOut } from "firebase/auth"
 export const Navbar = () => {
-    const[user,loading,error] = useAuthState(auth); // this hook will automatically update the user variable whenever you login with a different account
+    const[user] = useAuthState(auth); // this hook will automatically update the user variable whenever you login with a different account
     const signUserOut = async () => {
         await signOut(auth);
     }

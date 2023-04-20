@@ -16,7 +16,7 @@ export const CreateForm = () => {
         title: yup.string().required("You must add a title"),
         description: yup.string().required("You must add a description"),
     })
-    const {register, handleSubmit, formState:{ errors,isLoading }, } = useForm({
+    const {register, handleSubmit, formState:{ errors }, } = useForm({
         resolver: yupResolver(schema),
 
     });

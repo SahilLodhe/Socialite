@@ -10,9 +10,9 @@ import {
   import { useEffect, useState } from "react";
   import { useAuthState } from "react-firebase-hooks/auth";
   import { db, auth } from "../../config/firebase";
-  import { Post as IPost } from "./main";
-  import { CreateComment } from "../create-comment/create-comment"
-import { date } from "yup";
+  // import { Post as IPost } from "./main";
+  // import { CreateComment } from "../create-comment/create-comment"
+// import { date } from "yup";
   
   // export interface Props {
   //   post: IPost;
