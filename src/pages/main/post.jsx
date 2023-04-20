@@ -109,7 +109,7 @@ import {
         );
       }
       getLikes();
-    }, [getLikes]);
+    }, [getLikes,likesDoc]);
     
     return (
       <div>
