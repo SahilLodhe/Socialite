@@ -33,9 +33,7 @@ import {
   export const Post = (props) => {
     const { post } = props;
     // const [postID,setPostID] = useState<CommentPostID>({postID: post.id});
-    useEffect(() => {
-      const likesDoc = query(likesRef, where("postId", "==", post.id));
-    },[])
+    
     // useEffect((likesDoc) => {
 
     // },[])
@@ -51,8 +49,10 @@ import {
   
     const likesRef = collection(db, "likes");
   
-    const likesDoc = query(likesRef, where("postId", "==", post.id));
-  
+    // const likesDoc = query(likesRef, where("postId", "==", post.id));
+    useEffect(() => {
+      const likesDoc = query(likesRef, where("postId", "==", post.id));
+    },[post.id,likesRef])
     const getLikes = async () => {
       const data = await getDocs(likesDoc);
       setLikes(
