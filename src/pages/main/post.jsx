@@ -61,7 +61,7 @@ import { date } from "yup";
           data.docs.map((doc) => ({ userId: doc.data().userId, likeId: doc.id }))
         );
       };
-    },[])
+    },[likesDoc])
     
     const addLike = async () => {
       try {
