@@ -14,24 +14,17 @@ import { Post } from "./post";
 export const Main = () => {
   const [postsList, setPostsList] = useState(null);
   const postsRef = collection(db, "posts");
-  useEffect(() => {
-    const getPosts = async () => {
-      const data = await getDocs(postsRef);
-      setPostsList(
-        data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-      );
-    };
-    return (() => {
-      <div>
-        {getPosts}
-      </div>
-    })
-  })
-  
 
-  // useEffect(() => {
-  //   // getPosts();
-  // }, []);
+  const getPosts = async () => {
+    const data = await getDocs(postsRef);
+    setPostsList(
+      data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+    );
+  };
+
+  useEffect(() => {
+    getPosts();
+  }, []);
 
   return (
     <div>

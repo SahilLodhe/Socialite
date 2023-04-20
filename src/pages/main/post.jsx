@@ -10,9 +10,8 @@ import {
   import { useEffect, useState } from "react";
   import { useAuthState } from "react-firebase-hooks/auth";
   import { db, auth } from "../../config/firebase";
-  // import { Post as IPost } from "./main";
-  // import { CreateComment } from "../create-comment/create-comment"
-// import { date } from "yup";
+  import { Post as IPost } from "./main";
+  import { CreateComment } from "../create-comment/create-comment"
   
   // export interface Props {
   //   post: IPost;
@@ -34,16 +33,6 @@ import {
   export const Post = (props) => {
     const { post } = props;
     // const [postID,setPostID] = useState<CommentPostID>({postID: post.id});
-    
-    // useEffect((likesDoc) => {
-
-    // },[])
-    // useEffect(() => {
-
-    // },[])
-    // useEffect(() => {
-
-    // },[])
     const [user] = useAuthState(auth);
   
     const [likes, setLikes] = useState(null);
@@ -51,29 +40,13 @@ import {
     const likesRef = collection(db, "likes");
   
     const likesDoc = query(likesRef, where("postId", "==", post.id));
-    useEffect(() => {
-      const likesDoc = query(likesRef, where("postId", "==", post.id));
-      return(() => {
-        <div>{likesDoc}</div>
-      })
-    },[post.id,likesRef])
-    useEffect(() => {
-      const getLikes = async () => {
-        const data = await getDocs(likesDoc);
-        setLikes(
-          data.docs.map((doc) => ({ userId: doc.data().userId, likeId: doc.id }))
-        );
-        return(() => {
-          <div>{getLikes}</div>
-        })
-      };
-      return(() => {
-        <div>
-          {getLikes}
-        </div>
-      })
-    },[likesDoc])
-    
+  
+    const getLikes = async () => {
+      const data = await getDocs(likesDoc);
+      setLikes(
+        data.docs.map((doc) => ({ userId: doc.data().userId, likeId: doc.id }))
+      );
+    };
     const addLike = async () => {
       try {
         const newDoc = await addDoc(likesRef, {
@@ -117,14 +90,8 @@ import {
     const hasUserLiked = likes?.find((like) => like.userId === user?.uid);
   
     useEffect(() => {
-      const getLikes = async () => {
-        const data = await getDocs(likesDoc);
-        setLikes(
-          data.docs.map((doc) => ({ userId: doc.data().userId, likeId: doc.id }))
-        );
-      }
       getLikes();
-    }, [likesDoc]);
+    }, []);
     
     return (
       <div>
