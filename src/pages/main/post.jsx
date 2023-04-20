@@ -53,6 +53,9 @@ import {
     const likesDoc = query(likesRef, where("postId", "==", post.id));
     useEffect(() => {
       const likesDoc = query(likesRef, where("postId", "==", post.id));
+      return(() => {
+        <div>{likesDoc}</div>
+      })
     },[post.id,likesRef])
     useEffect(() => {
       const getLikes = async () => {
@@ -60,6 +63,9 @@ import {
         setLikes(
           data.docs.map((doc) => ({ userId: doc.data().userId, likeId: doc.id }))
         );
+        return(() => {
+          <div>{getLikes}</div>
+        })
       };
     },[likesDoc])
     
