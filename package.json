@@ -2,6 +2,7 @@
   "name": "socialite",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://SahilLodhe.github.io/socialite",
   "dependencies": {
     "@hookform/resolvers": "^3.1.0",
     "@reduxjs/toolkit": "^1.9.3",
@@ -23,6 +24,7 @@
     "yup": "^1.1.1"
   },
   "scripts": {
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -45,5 +47,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
   }
 }
