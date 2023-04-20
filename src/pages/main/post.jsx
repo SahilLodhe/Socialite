@@ -12,6 +12,7 @@ import {
   import { db, auth } from "../../config/firebase";
   import { Post as IPost } from "./main";
   import { CreateComment } from "../create-comment/create-comment"
+import { date } from "yup";
   
   // export interface Props {
   //   post: IPost;
@@ -53,12 +54,15 @@ import {
     useEffect(() => {
       const likesDoc = query(likesRef, where("postId", "==", post.id));
     },[post.id,likesRef])
-    const getLikes = async () => {
-      const data = await getDocs(likesDoc);
-      setLikes(
-        data.docs.map((doc) => ({ userId: doc.data().userId, likeId: doc.id }))
-      );
-    };
+    useEffect(() => {
+      const getLikes = async () => {
+        const data = await getDocs(likesDoc);
+        setLikes(
+          data.docs.map((doc) => ({ userId: doc.data().userId, likeId: doc.id }))
+        );
+      };
+    },[])
+    
     const addLike = async () => {
       try {
         const newDoc = await addDoc(likesRef, {
@@ -109,7 +113,7 @@ import {
         );
       }
       getLikes();
-    }, [getLikes,likesDoc]);
+    }, [likesDoc]);
     
     return (
       <div>
