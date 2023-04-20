@@ -49,7 +49,7 @@ import {
   
     const likesRef = collection(db, "likes");
   
-    // const likesDoc = query(likesRef, where("postId", "==", post.id));
+    const likesDoc = query(likesRef, where("postId", "==", post.id));
     useEffect(() => {
       const likesDoc = query(likesRef, where("postId", "==", post.id));
     },[post.id,likesRef])
