@@ -67,6 +67,11 @@ import {
           <div>{getLikes}</div>
         })
       };
+      return(() => {
+        <div>
+          {getLikes}
+        </div>
+      })
     },[likesDoc])
     
     const addLike = async () => {
